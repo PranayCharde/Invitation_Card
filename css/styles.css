@@ -1,0 +1,433 @@
+/* Wedding Invitation Luxury Stylesheet */
+:root {
+  --primary: #c5a059;
+  --primary-light: #e8d5b5;
+  --primary-dark: #8c6b2d;
+  --accent: #9e7a45;
+  --bg-main: #fcfbf7;
+  --bg-card: #ffffff;
+  --text-main: #2d2926;
+  --text-muted: #6b665f;
+  --border-gold: rgba(197, 160, 89, 0.35);
+  --gold-gradient: linear-gradient(135deg, #dfba73 0%, #c5a059 50%, #9e7732 100%);
+  --gold-foil: linear-gradient(45deg, #eed8ae 0%, #d4af37 25%, #f9e8be 50%, #aa8230 75%, #eed8ae 100%);
+  --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 20px 25px -5px rgba(197, 160, 89, 0.08);
+  --shadow-luxury: 0 25px 50px -12px rgba(130, 100, 40, 0.18);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans: 'Montserrat', system-ui, sans-serif;
+}
+
+/* Color Themes */
+[data-theme="rose"] {
+  --primary: #c97d8b;
+  --primary-light: #f7e1e6;
+  --primary-dark: #8c4251;
+  --accent: #a35b6a;
+  --bg-main: #faf4f5;
+  --border-gold: rgba(201, 125, 139, 0.35);
+  --gold-gradient: linear-gradient(135deg, #f2b8c2 0%, #c97d8b 50%, #8c4251 100%);
+}
+
+[data-theme="emerald"] {
+  --primary: #1e4d3f;
+  --primary-light: #cbe3db;
+  --primary-dark: #0e2921;
+  --accent: #c5a059;
+  --bg-main: #f4f8f6;
+  --border-gold: rgba(30, 77, 63, 0.3);
+  --gold-gradient: linear-gradient(135deg, #377d69 0%, #1e4d3f 50%, #0e2921 100%);
+}
+
+[data-theme="midnight"] {
+  --primary: #c5a059;
+  --primary-light: #d8c292;
+  --primary-dark: #8c6b2d;
+  --accent: #60a5fa;
+  --bg-main: #0c1322;
+  --bg-card: #131c31;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-gold: rgba(197, 160, 89, 0.4);
+}
+
+[data-theme="terracotta"] {
+  --primary: #b85d43;
+  --primary-light: #f4dcd3;
+  --primary-dark: #7a3521;
+  --accent: #5e6d55;
+  --bg-main: #fbf6f3;
+  --border-gold: rgba(184, 93, 67, 0.35);
+  --gold-gradient: linear-gradient(135deg, #d88269 0%, #b85d43 50%, #7a3521 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Gold Text Shimmer */
+.gold-shimmer {
+  background: var(--gold-foil);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Subtle floral corner ornament */
+.ornament-border {
+  position: relative;
+}
+.ornament-border::before,
+.ornament-border::after {
+  content: "✤";
+  position: absolute;
+  color: var(--primary);
+  font-size: 1rem;
+  opacity: 0.6;
+}
+.ornament-border::before { top: 12px; left: 16px; }
+.ornament-border::after { bottom: 12px; right: 16px; }
+
+/* Envelope Interactive Intro Screen */
+#envelope-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(circle at center, #2e2820 0%, #15120e 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  overflow: hidden;
+}
+
+#envelope-screen.opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: min(92vw, 480px);
+  height: 320px;
+  perspective: 1200px;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.envelope-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  background: #fbf7ee;
+  border-radius: 8px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(197, 160, 89, 0.4);
+  overflow: hidden;
+}
+
+.envelope-lining {
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(197, 160, 89, 0.45);
+  background: radial-gradient(circle at center, #fff 0%, #faf3e0 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+/* Flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: top center;
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.envelope-flap-triangle {
+  width: 100%;
+  height: 0;
+  border-left: 240px solid transparent;
+  border-right: 240px solid transparent;
+  border-top: 170px solid #ede3ce;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+@media (max-width: 520px) {
+  .envelope-flap-triangle {
+    border-left-width: 46vw;
+    border-right-width: 46vw;
+    border-top-width: 160px;
+  }
+}
+
+/* Wax Seal */
+.wax-seal {
+  position: absolute;
+  top: 145px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 78px;
+  height: 78px;
+  background: radial-gradient(circle at 35% 35%, #b92b27, #7e1215);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.5);
+  z-index: 30;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.wax-seal:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 10px 25px rgba(185, 43, 39, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.wax-seal-inner {
+  width: 62px;
+  height: 62px;
+  border: 1.5px dashed rgba(255, 215, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #f7d58b;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Inner preview letter sliding out */
+.envelope-letter {
+  position: absolute;
+  inset: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: transform 0.8s 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 10;
+}
+
+.envelope-wrapper.animating .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 5;
+}
+
+.envelope-wrapper.animating .wax-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+.envelope-wrapper.animating .envelope-letter {
+  transform: translateY(-80px) scale(1.04);
+}
+
+/* Background Petal / Stardust Canvas */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+}
+
+/* Countdown Card */
+.countdown-box {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 16px 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.countdown-box:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Timeline Custom Styles */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: var(--primary);
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--primary);
+  z-index: 10;
+}
+
+/* Audio Player Floating Button */
+.music-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 990;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(197, 160, 89, 0.25);
+}
+
+.music-btn.playing {
+  animation: pulse-ring 2.5s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(197, 160, 89, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+}
+
+/* Customizer Floating Button */
+.customizer-btn {
+  position: fixed;
+  bottom: 84px;
+  right: 24px;
+  z-index: 990;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.customizer-btn:hover {
+  transform: scale(1.08);
+}
+
+/* Custom Glass Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Lightbox Modal */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* VIP Invitation Pass Badge */
+.vip-pass-card {
+  background: linear-gradient(135deg, #fdfbf7 0%, #f7f0e3 100%);
+  border: 2px solid var(--primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.vip-pass-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
