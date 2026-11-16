@@ -4,7 +4,95 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prajwal & Pratiksha | Royal Wedding Invitation</title>
-  
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Prajwal & Pratiksha | Royal Wedding Invitation" />
+  <meta name="description" content="Together with our families, we cordially invite you to celebrate the royal wedding of Prajwal & Pratiksha on Tuesday, 09 February 2027 at Om Shiv Celebration Lawn, Nagpur, Maharashtra." />
+  <meta name="author" content="Prajwal & Pratiksha" />
+  <meta name="keywords" content="Prajwal, Pratiksha, Prajwal and Pratiksha, PraWedsPrati, Wedding Invitation, Indian Wedding, Nagpur Wedding, Royal Wedding Invitation" />
+  <meta name="theme-color" content="#4A101B" />
+  <meta name="msapplication-TileColor" content="#4A101B" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Prajwal & Pratiksha" />
+
+  <!-- Open Graph / Facebook / WhatsApp / Telegram -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Prajwal & Pratiksha Wedding" />
+  <meta property="og:title" content="Prajwal & Pratiksha | Royal Wedding Invitation" />
+  <meta property="og:description" content="Together with our families, we cordially invite you to celebrate the royal wedding of Prajwal & Pratiksha on Tuesday, 09 February 2027 at Om Shiv Celebration Lawn, Nagpur, Maharashtra." />
+  <meta property="og:image" content="/images/hero-couple-full.jpg" />
+  <meta property="og:image:secure_url" content="/images/hero-couple-full.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Prajwal & Pratiksha Wedding Invitation" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Prajwal & Pratiksha | Royal Wedding Invitation" />
+  <meta name="twitter:description" content="Together with our families, we cordially invite you to celebrate the royal wedding of Prajwal & Pratiksha on Tuesday, 09 February 2027 at Om Shiv Celebration Lawn, Nagpur, Maharashtra." />
+  <meta name="twitter:image" content="/images/hero-couple-full.jpg" />
+  <meta name="twitter:image:alt" content="Prajwal & Pratiksha Wedding Invitation" />
+
+  <!-- JSON-LD Structured Data for Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Wedding of Prajwal & Pratiksha",
+    "description": "Royal Wedding Celebration of Prajwal Deshmukh & Pratiksha Patil",
+    "startDate": "2027-02-09T18:00:00+05:30",
+    "endDate": "2027-02-09T23:59:00+05:30",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "Place",
+      "name": "Om Shiv Celebration Lawn and Hall",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Umred Road, Beside Indian Oil Petrol Pump, Telephone Nagar, Dighori",
+        "addressLocality": "Nagpur",
+        "addressRegion": "Maharashtra",
+        "postalCode": "440034",
+        "addressCountry": "IN"
+      }
+    },
+    "image": [
+      "/images/hero-couple-full.jpg"
+    ],
+    "organizer": {
+      "@type": "Person",
+      "name": "Prajwal & Pratiksha"
+    }
+  }
+  </script>
+
+  <script>
+    // Dynamically upgrade relative og:image and og:url paths to absolute URLs at runtime
+    if (typeof window !== 'undefined') {
+      try {
+        var origin = window.location.origin;
+        var ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) {
+          ogUrl.content = window.location.href;
+        } else {
+          var metaUrl = document.createElement('meta');
+          metaUrl.setAttribute('property', 'og:url');
+          metaUrl.content = window.location.href;
+          document.head.appendChild(metaUrl);
+        }
+        ['og:image', 'og:image:secure_url', 'twitter:image'].forEach(function(prop) {
+          var tag = document.querySelector('meta[property="' + prop + '"]') || document.querySelector('meta[name="' + prop + '"]');
+          if (tag && tag.content && tag.content.startsWith('/')) {
+            tag.content = origin + tag.content;
+          }
+        });
+      } catch (e) {}
+    }
+  </script>
+
   <!-- Premium Google Fonts: Playfair Display, Cormorant Garamond, Great Vibes, Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
